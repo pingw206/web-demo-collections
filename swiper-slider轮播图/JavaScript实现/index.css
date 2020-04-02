@@ -1,0 +1,72 @@
+.swiperSlider {
+  width: 600px;
+  margin:0 auto;
+  position: relative;
+}
+/*  overflow: hidden;限定高宽后将其他图片隐藏
+  希望.container相对.showContainer可以左右移动，所以外层relative，里面absolute
+*/
+.swiperSlider .showContainer {
+  width: 600px;
+  height: 450px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 因为是绝对定位，所以可以通过控制left和right来控制图片的移动 
+  因为有6张图片，每张宽600px，所以总宽3600px*/
+.swiperSlider .showContainer .container {
+  width: 3600px;
+  height: 450px;
+  position: absolute;
+  left: 0px;
+}
+/* 
+图片设置左浮动，并且设置大小和容器一致就能完整显示逻辑第一张
+*/
+.swiperSlider .showContainer .container img {
+  display: block;
+  float: left;
+  width: 600px;
+  height: 450px;
+}
+/* top:40% 放到图片中间位置；因为用的是实体箭头，所以用font-size控制大小 */
+.swiperSlider .triangle {
+  position: absolute;
+  top: 40%;
+  cursor: pointer;
+  font-size: 40px;
+  color: lightgray;
+}
+.swiperSlider .triangle:hover{
+  color: gray;
+}
+.swiperSlider .left-triangle {
+  left: -50px;
+}
+.swiperSlider .right-triangle {
+  right: -50px;
+}
+
+.swiperSlider .dots{
+  width: 100%;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+/*  用span画了一个直径10px的圈 */
+.swiperSlider .dots .dot{
+  display: inline-block;
+  width: 10px;
+  height:10px;
+  border-radius: 50%;
+  background: lightgray;
+  margin-right: 10px;
+}
+
+.swiperSlider .dots .active {
+  background-color: gray;
+}
