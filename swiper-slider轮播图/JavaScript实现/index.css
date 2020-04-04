@@ -57,7 +57,7 @@
   cursor: pointer;
 }
 
-/*  用span画了一个直径10px的圈 */
+/*  span元素时行内元素，只有在设置其display为block或者inline-block后才可设置其宽高，利用border-radius实现圆角 */
 .swiperSlider .dots .dot{
   display: inline-block;
   width: 10px;
