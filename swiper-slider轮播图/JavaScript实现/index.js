@@ -97,7 +97,7 @@ function autoRollImg() {
         dots[n].onmouseout = function() {
           rollAuto();
         }
-      })(i);
+      })(i);   //闭包
     }
     return index;
   }
