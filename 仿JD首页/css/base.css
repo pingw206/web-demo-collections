@@ -1,0 +1,12 @@
+
+/* 版心的公共类 */
+.w {
+    width: 1190px;
+    margin: 0 auto;
+}
+/* header start */
+header {
+    height: 80px;
+    background-color: #020000;
+}
+/* header end */
