@@ -170,4 +170,132 @@ header {
     line-height: 15px;  
     font-size: 12px;
 }
+/* 关键词 */
+.hotWords {
+    position: absolute;
+    top: 68px;
+    left: 320px;
+}
+/* 小导航栏 */
+.navitems {
+    position: absolute;
+    left: 230px;
+    bottom: 0;
+    height: 40px;
+    line-height: 40px;
+    
+}
+.navitems li {
+    float: left;
+    margin-left: 30px;
+}
+.navitems .space {  /*使用负数来减少右侧li的距离*/
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: -15px;
+}
+.navitems li a {
+    font-size: 16px;
+    font-weight: 700;
+    color: #555;
+}
+.navitems a:hover {
+    color: #f10215;
+}
+/* 超级日部分 */
+.super {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+
+}
 /* 中间头部分end */
+
+/* 页面底部分 start */
+footer {
+    margin-top: 35px;
+    background-color: #eaeaea;
+    height: 500px;
+}
+/* 服务模块 */
+.service {   /* padding的设置可以把字放中间*/
+    padding: 30px 0;
+    border-bottom: 1px solid #dedede;
+    overflow: hidden;  /*父盒子清除浮动，去掉下面的li浮动后带来的影响,因为ul,w都没有高度，一浮动高就小了？？？*/
+}
+.service ul li{
+    width: 297px;
+    height: 43px;
+    line-height: 43px;
+    position: relative;
+    float: left;
+}
+.service p{
+    margin-left: 82px;
+    font-size: 18px;
+    font-weight: 700;
+}
+.service h5{
+    width: 36px;
+    height: 43px;
+    position: absolute;
+    margin-left: 38px;
+    background: url("../images/ico.png") no-repeat;
+    text-indent: -999em; /*隐藏文字*/
+}
+.service li:nth-child(2) h5{ /*通过li，定位一张图片中不同的位置*/
+    background-position: 0 -43px;
+}
+.service li:nth-child(3) h5{
+    background-position: 0 -86px;
+}
+.service li:nth-child(4) h5{
+    background-position: 0 bottom;
+}
+/* 帮助模块 */
+.help {
+    height: 200px;
+    border-bottom: 1px solid #dedede;
+    padding-top: 26px;
+    box-sizing: border-box;  /*不加这句话的话height就会被padding撑开不是200*/
+    position: relative;
+}
+.help dl{
+    width: 192px;
+    float: left;
+}
+.help dt,
+.coverage h5{
+    height: 27px;
+    color: #666;
+    font-size: 14px;
+}
+.help dd{
+    height: 22px;
+    color: #666;
+}
+/* 范围 */
+.coverage {
+    background: url("../images/ico_footer.png") no-repeat;
+    position: absolute;
+    width: 206px;
+    height: 151px;
+    right: 0;
+}
+.coverage h5 {
+    padding-left: 35px;
+}
+.coverage p{
+    font-size: 12px;
+    line-height: 18px;
+    color: #666;
+    width: 180px;
+
+}
+.coverage a{ /*a是行内元算，先转成块元素，再写margin；width=全宽，配合text-align使其偏向右侧*/
+    display: block;
+    margin-top: 5px;
+    width: 180px;
+    text-align: right;
+}
+/* 页面底部分 end */
