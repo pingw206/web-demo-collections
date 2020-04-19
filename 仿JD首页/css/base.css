@@ -215,7 +215,10 @@ header {
 footer {
     margin-top: 35px;
     background-color: #eaeaea;
-    height: 500px;
+    height: 520px;
+}
+footer a{
+    color: #666;
 }
 /* 服务模块 */
 .service {   /* padding的设置可以把字放中间*/
@@ -260,7 +263,7 @@ footer {
     box-sizing: border-box;  /*不加这句话的话height就会被padding撑开不是200*/
     position: relative;
 }
-.help dl{
+.help dl{  /*用dl,dt,dd列表来做*/
     width: 192px;
     float: left;
 }
@@ -297,5 +300,46 @@ footer {
     margin-top: 5px;
     width: 180px;
     text-align: right;
+}
+/* 版权模块 */
+.copyright {
+    padding-top: 18px;
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+}
+.copyright span{
+    padding: 0 8px;
+}
+.copyright div{
+    margin-top: 16px;
+    color: #999999;
+}
+.copyright p{
+    line-height: 22px;
+}
+/* 精灵图 */
+
+.foot-icon a{
+    display: inline-block; /*display:block 会垂直排列，改成行内块元素，配上前面定义的text-align:center，就可以按行居中了*/
+    width: 103px;
+    height: 33px;
+    background: url("../images/ico_footer.png") no-repeat 0 -150px;
+    margin: 20px 4px 0;
+}
+.foot-icon a:nth-child(2) {
+    background-position: -103px -150px; 
+}
+.foot-icon a:nth-child(3) {
+    background-position: 0 -183px; 
+}
+.foot-icon a:nth-child(4) {
+    background-position: -103px -183px; 
+}
+.foot-icon a:nth-child(5) {
+    background-position: 0 -216px; 
+}
+.foot-icon a:nth-child(6) {
+    background-position: -103px -216px; 
 }
 /* 页面底部分 end */
