@@ -1,0 +1,105 @@
+/* 引入顺序在base文件后面，因为还会用到base里面定义的公共class */
+/* 中间分类区域 start */
+
+.grid {
+    height: 480px;  /*父元素设置了高度，就不用清除浮动了--因为子元素浮动会影响父元素的高度*/
+}
+.grid-col1 {
+    width: 190px;
+    height: 100%; /*忘了设置这里就没有高度哦*/
+    background-color:#6e6568;
+    font-size: 14px; /*这里设置小斜杠*/
+    color: #fff ;
+}
+.grid-col2 {
+    width: 790px;
+    height: 100%;
+    margin-left: 10px;
+}
+.grid-col3 {
+    width: 190px;
+    height: 100%;
+    background-color: blue;
+}
+/* 分类 .grid-col1*/
+.grid-col1 ul{
+    padding:10px 0;   
+}
+.grid-col1 ul li {
+    padding-left: 12px; /*这个不能放在ul,不然鼠标放到一行li时不能都是灰色的，会有左边padding漏出来；而且不能放margin，不占位置*/
+    height: 29px;
+    line-height: 26px;
+}
+.grid-col1 a {
+    font-size: 14px;  /*这里设置a字体，不然会继承之前的a*/
+    color: #fff;
+    padding: 0 3px;
+}
+.grid-col1 li:hover{
+    background-color:#9c9698;
+}
+.grid-col1 a:hover{
+    color: #f10215;
+}
+/* banner */
+img{
+    display: block; /*为了让图片和下面的盒子中间没有缝隙，也可以用vertical-align: top*/
+}
+.grid-col2-bottom div{
+    float:left;
+    margin-top: 10px; /*和底部对齐的简单方法*/
+}
+.grid-col2-bottom div:last-child{
+    float:right; /*和右边对齐的简单方法，如果也是float:left就紧靠左图案了*/
+    margin-top: 10px;
+}
+/*arrow*/
+.grid-col2-top{
+    position: relative;
+} 
+.arrow-l,
+.arrow-r {
+    position: absolute;
+    top:50%;
+    height: 60px;
+    width: 30px;
+    background:rgba(0,0,0,0.3);
+    font-size: 20px;
+    font-family: arial;
+    font-weight: normal;
+    text-align: center;
+    line-height: 60px;
+    color: rgba(255,255,255,0.6);
+    transform: translateY(-50%);
+}
+.arrow-r {
+    right: 0;
+}
+/* 轮播小圆点 */
+.circle {
+    width: 175px;
+    box-sizing: border-box;
+    height: 20px;
+    position: absolute;
+    bottom: 20px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-left: 8px;
+}
+.circle li{
+    width: 12px;
+    height: 12px;
+    background-color:#fff;
+    border-radius: 50%;
+    float: left;
+    margin: 4px;
+    cursor: pointer;
+}
+.circle .current{  /*注意权重计算，只写.current权重10是没法覆盖上一条的权重11*/
+    background-color: #f10215;
+    
+}
+
+/* 中间分类区域 end */
