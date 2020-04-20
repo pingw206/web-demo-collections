@@ -19,9 +19,8 @@
 .grid-col3 {
     width: 190px;
     height: 100%;
-    background-color: blue;
 }
-/* 分类 .grid-col1*/
+/* 左边1 .grid-col1*/
 .grid-col1 ul{
     padding:10px 0;   
 }
@@ -41,7 +40,7 @@
 .grid-col1 a:hover{
     color: #f10215;
 }
-/* banner */
+/* 中间2 banner */
 img{
     display: block; /*为了让图片和下面的盒子中间没有缝隙，也可以用vertical-align: top*/
 }
@@ -101,5 +100,88 @@ img{
     background-color: #f10215;
     
 }
+/* 右边3 */
+.login {
+    height: 115px;
+    border-bottom: 1px solid #ccc;
+    background-color:#fff;
+    padding: 15px;  /*留出中间区域，不用再下面三块分别写了*/
+    box-sizing: border-box;
+}
+.login-t{
+    width: 95px;
+    height: 60px;
+    font-size: 12px;
+    color: #666;
+    line-height:20px ;
+    white-space: nowrap;/*显示省略号的三步*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 60px; /*挤出图片的位置*/
+    position: relative;
+}
+.login-t a{
+    color: #666;
+}
+.login-t a:hover{
+    color: #f10215;
+}
+.user-info {
+    width: 50px;
+    height: 50px;
+    position: absolute; /*a本来是行内元素，没有宽高，给了position之后，有了宽高*/
+    top: 0;
+    left: 0;
+    background: url("../images/sprite_userinfo@1x.png") no-repeat;
+    background-position: -70px 0;
 
+}
+.user-info img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.login-b a{
+    display: inline-block;/*都省的浮动了，反正中间也是有缝隙的，用margin来调一下就可*/
+    margin-right: 3px;
+    width: 70px;
+    height: 20px;
+    color: #f10215;
+    border: 2px solid #f10215;
+    line-height: 20px;
+    text-align: center;
+}
+.login-b a:hover{
+    background-color: #f10215;
+    color: #fff;
+}
+.news {
+    height: 154px;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    padding: 7px 13px 0;
+    box-sizing: border-box;
+}
+.news-t {
+    padding-bottom: 2px ;
+    border-bottom: 1px solid #ccc;
+    color: #666;
+}
+.news-t .cx {
+    padding-right: 12px;
+    border-right: 1px solid #ccc;
+}
+.news-t .gg {
+    padding-left: 14px;
+}
+.news-t .more {
+    padding-left: 50px;
+}
+
+.expand {
+    height: 209px;
+    background-color: blue;
+}
 /* 中间分类区域 end */
