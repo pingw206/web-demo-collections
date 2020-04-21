@@ -10,6 +10,7 @@
     background-color:#6e6568;
     font-size: 14px; /*这里设置小斜杠*/
     color: #fff ;
+    position: relative;
 }
 .grid-col2 {
     width: 790px;
@@ -21,6 +22,27 @@
     height: 100%;
 }
 /* 左边1 .grid-col1*/
+/*广告飘窗*/
+.ad {
+    position: absolute; 
+    width: 250px;
+    height: 480px;
+    top: 0;
+    left: -250px;
+}
+.ad-r{
+    position: absolute;  /*父盒子.ad很窄，浮动不开，只能用定位*/
+    top: 0;
+    left: 250px;
+    z-index: 999; /*在最上面*/
+    width: 0; /*隐藏盒子，鼠标经过时再变出来*/
+    height: 480px; /*弹出来时只有宽度变化*/
+}
+.ad:hover .ad-r{
+    width: 990px;
+    transition: all 0.3;  /*也可以把这个变化写到盒子里，会有拉出来的效果*/
+}
+/*类目*/
 .grid-col1 ul{
     padding:10px 0;   
 }
@@ -168,6 +190,7 @@ img{
     padding-bottom: 2px ;
     border-bottom: 1px solid #ccc;
     color: #666;
+    position: relative;
 }
 .news-t .cx {
     padding-right: 12px;
@@ -179,9 +202,57 @@ img{
 .news-t .more {
     padding-left: 50px;
 }
-
+.news-t div{
+   position: absolute; 
+   height: 2px;
+   width: 30px;
+   top: 18px;
+   left: 0;
+   background-color: #f10215;
+}
+.news-b {
+    padding-top: 10px;
+}
+.news-b li{
+    height: 23px;
+    line-height: 23px;
+}
+/* 扩展区域 */
 .expand {
     height: 209px;
-    background-color: blue;
+    background-color:#fff;
+    overflow: hidden; /*继承父盒子 width190px， 溢出的隐藏，就正好隐藏掉最右面和下面的边框*/
+}
+.expand ul{
+    width: 195px; /*因为父盒子宽190，但4个li超过190会放不下而到下一行，此时给ul放大，li就能放下了*/
+}
+.expand li{
+    width: 47px;
+    height: 69px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    float: left;
+}
+.expand li a{
+    display: block; /*转成block*/
+    padding-top: 14px;  /*必须用padding，里面的都是链接*/
+    text-align: center;  /*话费两个字居中*/
+}
+.expand li i {
+    background: url("../images/sprite_fs@1x.png") no-repeat;
+    width: 17px;
+    height: 22px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    background-position: -4px -88px;  /*省略了精灵图的定位*/
+}
+.expand li:first-child i{
+    width: 17px;
+    height: 22px;
+    display: block; /*转成block*/
+    margin: 0 auto;  /*小图标居中*/
+    margin-bottom: 10px;  /*图标和文字间的距离*/
+    background-position: -4px -88px; /*注意写法，没有逗号*/
 }
 /* 中间分类区域 end */
