@@ -189,10 +189,10 @@ header {
     float: left;
     margin-left: 30px;
 }
-.navitems .space {  /*使用负数来减少右侧li的距离*/
+.navitems .space {  
     margin-top: 15px;
     margin-left: 15px;
-    margin-right: -15px;
+    margin-right: -15px; /*使用负数来减少右侧li的距离*/
 }
 .navitems li a {
     font-size: 16px;
@@ -221,10 +221,10 @@ footer a{
     color: #666;
 }
 /* 服务模块 */
-.service {   /* padding的设置可以把字放中间*/
-    padding: 30px 0;
+.service {   
+    padding: 30px 0; /* padding的设置可以把字放中间*/
     border-bottom: 1px solid #dedede;
-    overflow: hidden;  /*父盒子清除浮动，去掉下面的li浮动后带来的影响,因为ul,w都没有高度，一浮动高就小了？？？*/
+    overflow: hidden;  /*【BFC】父盒子清除浮动，去掉下面的li浮动后带来的影响,因为ul,w都没有高度，一浮动高就小了*/
 }
 .service ul li{
     width: 297px;
@@ -246,7 +246,7 @@ footer a{
     background: url("../images/ico.png") no-repeat;
     text-indent: -999em; /*隐藏文字*/
 }
-.service li:nth-child(2) h5{ /*通过li，定位一张图片中不同的位置*/
+.service li:nth-child(2) h5{ /*精灵图 通过li，定位一张图片中不同的位置*/
     background-position: 0 -43px;
 }
 .service li:nth-child(3) h5{
