@@ -1,0 +1,52 @@
+/* 直接进入购物中心 */
+.direct-go{
+    position: fixed;  /*相对于windows固定定位*/
+    right: 5%;
+    top: 5%;
+    z-index: 999;  /*别的页面有设置z-index，这个必须在最前面*/
+}
+/* 第一屏 start */
+.section1 {
+	background: #fadd67 url(../images/t1fpyqfltdxxaiulhh-990-600.png) no-repeat center bottom;
+}
+.fly {
+    position: absolute; /*fullpage里面对每个section设置了relative定位*/
+    right: 20%;
+    top: 10%;
+}
+.shirt01{
+    position: absolute;
+    left: 50%;
+    margin-left: -200px;
+    bottom: 335px;
+}
+.goods{
+    position: absolute;
+    left: 50%;
+    margin-left: -400px;
+    bottom: 150px;
+}
+/* 第一屏 end */
+.section2 {
+	background: #84a2d4 url(../images/t1zdgpfi8exxca6rfn-2000-600.png) no-repeat center bottom;
+}
+
+.section3 {
+	background: #ef674d;
+}
+.section4 {
+	background: #fed url(../images/t1iresfnxaxxca6rfn-2000-600.png) no-repeat center bottom;
+
+}
+.section5 {
+	background: #d04759 url(../images/t1yisqfa4exxa3gmkg-2000-1500.png);
+}
+.section6 {
+	background: #84d9ed url(../images/t1dvj.fn0gxxb0_fua-2500-600.png) no-repeat 25% 100%;
+}
+.section7 {
+	background: #8ac060 url(../images/t1wf1tfctaxxa3gmkg-2000-1500.png) no-repeat 50% 100%;
+}
+.section8 {
+	background: url(../images/ksgw.png);
+}
