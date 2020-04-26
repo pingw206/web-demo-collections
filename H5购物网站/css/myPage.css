@@ -50,3 +50,32 @@
 .section8 {
 	background: url(../images/ksgw.png);
 }
+
+
+
+/* 动画部分 */
+.updown {
+  animation: 3s linear infinite fly;   /*注意顺序，名字放在后面 linear迅速*/
+}
+.shirt-updown {
+    animation: 2s linear infinite shirt01;
+}
+@keyframes fly {  /*先声明，再用，类似于js的声明函数function*/
+    0% {
+        top: 10%;  /*可省略初始值*/
+    }
+    50% {
+        top:20%;
+    }
+    100% {
+        top: 10%;
+    }
+}
+@keyframes shirt01{
+    50% {
+        bottom: 360px;
+    }
+    100% {
+        bottom: 335px;
+    }
+}
