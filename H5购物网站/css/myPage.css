@@ -27,13 +27,116 @@
     bottom: 150px;
 }
 /* 第一屏 end */
+
+/*  第二屏 start */
 .section2 {
 	background: #84a2d4 url(../images/t1zdgpfi8exxca6rfn-2000-600.png) no-repeat center bottom;
+    z-index: 2; /*为了让沙发掉到第三屏时能显示出来，不然都是默认的0；注意直接改shirt-02的index不行；是section之间的？？？*/
 }
+.computer {
+    width: 990px;
+    height: 500px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    /* background-color: rgba(0,0,0,.3); */
+}
+.search{
+    background: url("../images/search.png") no-repeat;
+    position: absolute;
+    width: 222px;
+    height: 45px;
+    right: -30px;
+    bottom: 300px;
+    display: none;  /*先隐藏*/
+}
+.search-words {
+    position: absolute;
+    right: 32px;
+    top: 5px;
+    opacity: 0; /*不用display:none，因为后面要做淡入淡出的效果 */
+}
+.search02 {
+    position: absolute;
+    width: 222px;
+    height: 45px;
+    bottom: 300px;
+    right: 370px;
+    display: none; /*不用淡入淡出，先隐藏，后面直接出来替换“框+字”*/
+}
+.goods-02{
+    position: absolute;
+    height: 100px;
+    bottom: 217px;
+    right: 270px;
+    display: none;
+}
+.shirt-02{
+    position: absolute;
+    bottom: 348px;
+    left: 395px;
+    width: 100px;
+    display: none;
+}
+.cover {
+    position: absolute;
+    bottom: 334px;
+    right: 495px;
+    width: 101px;
+    height: 90px;
+    background-color: #fff;
+    display: none;
+}
+.words-01,
+.words-02 {
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);/*搭配上面一条，水平居中*/
+    bottom: 550px;
+}
+.words-02 {
+    opacity: 0;
+}
+/*  第二屏 end */
 
+/* 第三屏 start */
 .section3 {
-	background: #ef674d;
+	background:#ef674d;
 }
+.main {
+    position: absolute;
+    width: 700px;
+    height: 500px;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url("../images/main.png") no-repeat center center;
+}
+.select {
+    position: absolute;
+    width: 300px;
+    height: 250px;
+    bottom: 0;
+    right: 8px;
+    background-color: #fff;
+} 
+.img-01{
+    position: absolute;
+    top: 0;
+}
+.btn-01{
+    position: absolute;
+    bottom: 10px;
+}
+/* 沙发 */
+.shirt-03 {
+    position: absolute;
+    left: 115px;
+    bottom: 200px;
+    display: none;
+}
+/* 第三屏 end */
 .section4 {
 	background: #fed url(../images/t1iresfnxaxxca6rfn-2000-600.png) no-repeat center bottom;
 
@@ -50,6 +153,7 @@
 .section8 {
 	background: url(../images/ksgw.png);
 }
+
 
 
 
