@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // 当前屏幕高度
     var k = $(window).height();
-    var flag = false; //用来控制动画显示顺序的；第二屏动画走完才往下掉沙发；从第三屏返回第二屏不再走第二屏的动画
+    //var flag = false; 用来控制动画显示顺序的；第二屏动画走完才往下掉沙发；从第三屏返回第二屏不再走第二屏的动画
 
 	$('#fullpage').fullpage({
         //入口参数设置--fullpage方法里面接收json对象形式
@@ -11,19 +11,17 @@ $(document).ready(function() {
         scrollingSpeed: 1200,
         //回调函数--滚动到某一屏触发---滚动到第二屏
         afterLoad: function(origin, destination, direction) {  /*index从0开始 */
-            if(destination.index == 1 && flag == false) {   /*经过验证，不是origin.index */
+            if(destination.index == 1) {   /*经过验证，不是origin.index, 另外删掉&&flag == false */
                 $(".search").show().animate({right: 370}, 1500, function(){  /*套回调函数；框滑进来 */
                     $(".search-words").animate({opacity:1}, 500,function(){  /*字出现 */
                         $(".search").hide();  /*框和字消失，同时另一套框字图片出现 */
                         /*往右上角缩小 */
-                        $(".search02").show().animate({height: 30,width: 148, right: 250, bottom: 452},1000,function(){
-                            flag = true;  //flag = true动画走完了，沙发可以往下掉了
-                        }); 
+                        $(".search02").show().animate({height: 30,width: 148, right: 250, bottom: 452},1000); //删掉function(){flag = true}; 动画走完了，沙发可以往下掉了
                         // 同时沙发图片出现
                         $(".goods-02").show().animate({height: 218},1000);
                         // 同时上面白色字体出现
                         $(".words-02").animate({opacity: 1},500);
-                    })
+                    });
                 }); 
             } 
         },
@@ -31,7 +29,7 @@ $(document).ready(function() {
         //回调函数 -- 刚开始滚动时触发 
         onLeave: function(origin, destination, direction){
             //---从第二屏到第三屏滚动
-            if(origin.index == 1 && direction == 'down' && flag == true) {
+            if(origin.index == 1 && direction == 'down') {   //&& flag == true删掉
                 $(".shirt-02").show().animate({bottom: -(k - 250),width:207,left:260},2000,function(){  //往下掉沙发到位置，同时放大图片；注意250是怎么算出来的
                     $(".img-01-a").animate({opacity:1},500,function(){
                         $(".btn-01-a").animate({opacity:1},500);
@@ -77,16 +75,59 @@ $(document).ready(function() {
                     $(".box-06").animate({bottom:40},500,function(){
                         $(".box-06").hide(); //盒子消失
                         //背景移动，效果是车在跑;只改变背景的X坐标即可
-                        $(".section").animate({backgroundPositionX:"100%"},4000,function(){ 
-                            $(".boy").animate({height:305,bottom:116},1000,function(){ //车停后，男孩跳出来
-                                $(".boy").animate({right:400},500);//男孩跳向右边
+                        $(".section6").animate({"backgroundPositionX":"100%"},1000,function(){ 
+                            $(".boy").animate({"height":305,"bottom":116},1000,function(){ //车停后，男孩跳出来
+                                $(".boy").animate({"right":500},500,function(){ //男孩跳向右边
+                                    $(".door").animate({"opacity": 1},200,function(){ //门打开
+                                        $(".girl").show().animate({right:350,height:305},200,function(){ //女生走出门
+                                            $(".pop-07").show(); //女孩出来后，请收货
+                                        }); 
+                                    });
+                                });
                             }); 
                         });
-                        $(".pop-06").show(); //地址出现
+                        //上面跟着车跑的一段话
+                        $(".words-06").show().animate({left:"30%"},500,"easeOutElastic");
+                        $(".pop-06").show(); //跟着车跑的地址
                     });
                 })
-
             }
-        }
+            //第六屏到第七屏
+            if(origin.index == 5 && direction == 'down') {
+                setTimeout(function(){ //指定的时间之后再调用函数---加载完页面停1s再点亮星星
+                    $(".star").animate({"width":"100%"},1000,function(){  //然后再出现好评字样
+                        $(".good-07").show();
+                    });
+                },1000)
+            }
+            //这是第八屏动画，不需要滚动触发
+            // $("beginShoping").mouseenter(function(event){
+            //     $(".btn-08-a").show();
+            // }).mouseleave(function(event){
+            //     $(".btn-08-a").hide();
+            // });
+            //更简洁的方法是用hover+toggle来做
+            $(".beginShoping").hover(function(event){
+                $(".btn-08-a").toggle();
+            })
+            //手随鼠标动；获取鼠标位置赋给手动坐标
+            $(document).mousemove(function(event) {
+                var x = event.pageX - $(".hand-08").width()/2; //-为了对准手中间
+                var y = event.pageY + 10; //+为了不挡住手
+                var minY = k - 449;   //手的高度是449，为了不让手往上走太多漏出来下面没胳膊
+                if (y < minY) {
+                    y = minY;
+                }
+                $(".hand-08").css({left:x, top:y});
+            });
+            //当点击再来一次时，分两步，1 回到第一屏，2 复原动画
+            //1.回到第一屏
+            $(".again").click(function(event){
+                //给fullpage添加methods方法：滚动到第一屏
+                $.fn.fullpage.moveTo(1);
+                //清除动画，也就是让图片/盒子 清除js添加到行内样式style；所以还得补个工作就是给有动画到盒子添加类名 .move
+                $("img, .move").attr("style","");
+            });
+        },
     });
 }); 

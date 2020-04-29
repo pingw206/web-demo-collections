@@ -1,3 +1,9 @@
+/* 设置最小到宽高，防止缩放到很小时变形；这样即使缩放，也不会变化，只是会显示部分 */
+html, body, .section {
+    min-height: 600px;
+    min-width: 1000px;
+}
+
 /* 直接进入购物中心 */
 .direct-go{
     position: fixed;  /*相对于windows固定定位*/
@@ -285,6 +291,7 @@
     bottom: 119px;
     right: 48%;
     display: none;
+    z-index: 50;
 }
 .boy {
     position: absolute;
@@ -295,18 +302,83 @@
 .girl {
     position: absolute;
     right: 315px;
-    height: 116px;
+    bottom: 116px;
+    height: 123px;
+    display: none;
 }
-
+.door {
+    position: absolute;
+    right: 285px;
+    bottom: 116px;
+    opacity: 0;;
+}
+.pop-07 {
+    position: absolute;
+    right: 445px;
+    bottom: 400px;
+    z-index: 40;
+    display: none;
+}
+.words-06 {
+    position: absolute;
+    left: 10%;
+    bottom: 479px;
+    display: none;
+}
 /* 第六屏 end */
+
+/*  第七屏 start  */
 .section7 {
 	background: #8ac060 url(../images/t1wf1tfctaxxa3gmkg-2000-1500.png) no-repeat 50% 100%;
 }
+.star {
+    position: absolute;
+    left: 50%;
+    bottom: 439px;
+    margin-left: -295px;
+    width: 0;  /*让背景慢慢变宽，实现星星逐渐点亮的效果；此处应该把亮星星放在背景里，然后改变盒子宽度；而不是直接插入图片不好控制，代码会很长*/
+    height: 20px;
+    background: url(../images/star.png) no-repeat;
+    background-size: 97px;
+}
+.good-07 {
+    position: absolute;
+	bottom: 382px;
+    left: 50%;
+    margin-left: -289px;
+    display: none;
+}
+/* 第七屏 end  */
+
+/*  第八屏 start  */
 .section8 {
 	background: url(../images/ksgw.png);
 }
-
-
+.beginShoping {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom:365px;
+}
+.btn-08-a {
+	position: absolute;
+	top: 0; 
+	left: 0; /*这两个0是为了完全相对于盒子定位，正好挡住同大小图片*/
+	display: none;
+}
+.again {
+	position: absolute;
+	bottom: 403px;
+	left: 50%;
+	margin-left: 240px;
+	cursor: pointer;
+}
+.hand-08 {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+}
+/* 第八屏 end  */
 
 
 /* 动画部分 */
