@@ -15,7 +15,7 @@
     /*固定在顶部*/
     position: fixed;
     height: 40px;
-    background: #e92322;
+    background: rgba(233,35,34,0); /*设置成完全透明，在JS里再设置改变*/
     /* 防止轮播图覆盖头部  */
     z-index: 999;
 }
