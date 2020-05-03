@@ -1,5 +1,7 @@
  window.onload=function() {
     searchEffect();
+    timeBack();
+    bannerEffect();
  }
 
 /*头部的js效果*/
@@ -21,5 +23,127 @@
             search.style.backgroundColor="rgba(233,35,34,"+opacity+")";
         }
     }
-
  }
+
+/*秒杀倒计时效果*/
+ function timeBack() {
+     /*1.获取用于展示时间的span*/
+     var spans = document.querySelector(".jd_sk_time").querySelectorAll("span");
+     /*2.设置初始的倒计时时间,以秒做为单位；因为后面的间隔1000毫秒就是1秒一次*/
+     var totalTime = 3700;
+      /*3.开启定时器，给它一个名字，方便后面清除定时器*/
+     var timerId = setInterval(function(){
+        totalTime--;
+         /*判断倒计时时间是否已经完成，清除定时器，不然就是负数了*/
+        if (totalTime < 0) {
+            clearInterval(timerId);
+            // 可以把return改成别的弹窗事件
+            return;
+        }
+        //获取剩余时间的小时，分钟，秒
+        var hour = Math.floor(totalTime/3600);
+        var minute = Math.floor(totalTime%3600/60);
+        var second = Math.floor(totalTime%3600%60);
+        //将时间填充到span中去，注意首位的0怎么显示出来
+        spans[0].innerHTML = Math.floor(hour/10);
+        spans[1].innerHTML = Math.floor(hour%10);
+        spans[3].innerHTML = Math.floor(minute/10);
+        spans[4].innerHTML = Math.floor(minute%10);
+        spans[6].innerHTML = Math.floor(second/10);
+        spans[7].innerHTML = Math.floor(second%10);
+     },1000);
+ }
+
+/* 轮播图效果 */
+function bannerEffect() {
+    /*1.设置修改轮播图的页面结构
+    * a.在开始位置添加原始的最后一张图片
+    * b.在结束位置添加原始的第一张图片*/
+    /*1.1.获取轮播图结构*/
+    var banner = document.querySelector(".jd_banner");
+    /*1.2.获取图片容器*/
+    var imgBox = banner.querySelector("ul:first-of-type");
+    /*1.3.获取原始的第一张,最后一张图片*/
+    var first = imgBox.querySelector("li:first-of-type");
+    var last = imgBox.querySelector("li:last-of-type");
+    /*1.4.在首尾插入两张图片   cloneNode:复制一个dom元素*/
+    imgBox.appendChild(first.cloneNode(true));
+     /*insertBefore(需要插入的dom元素，位置)*/
+    imgBox.insertBefore(last.cloneNode(true),imgBox.firstChild);
+
+    /* 2.设置修改后的样式 */
+        /*2.1获取所有li元素*/
+    var lis = imgBox.querySelectorAll("li");
+    /*2.2 获取li元素的数量*/
+    var count = lis.length;
+    /*2.3.获取banner的宽度*/
+    var bannerWidth = banner.offsetWidth;
+    /*2.4 设置图片盒子的宽度*/
+    imgBox.style.width = count*bannerWidth+"px";
+    /*2.5 设置每一个li(图片)元素的宽度*/
+    for (var i = 0; i < count; i++) {
+        lis[i].style.width = bannerWidth+"px";
+    }
+
+    /*定义图片索引:图片已经有一个宽度的默认偏移，所以不再是0*/
+    var index=1;
+
+    /*3.设置默认的偏移:一个banner宽度*/
+    imgBox.style.left = -bannerWidth+"px";
+
+    /*4.当屏幕变化的时候，重新计算宽度*/
+    window.onresize = function(){
+        /*4.1.获取banner的宽度,覆盖全局的宽度值*/
+        bannerWidth = banner.offsetWidth;
+        imgBox.style.width = count*bannerWidth+"px";
+        for (var i = 0; i < count; i++) {
+            lis[i].style.width = bannerWidth+"px";
+        }
+        /*重新设置定位值*/
+        imgBox.style.left = -index*bannerWidth+"px";
+    }
+
+    /*5.实现自动轮播*/
+    var timerId;
+    var startTime = function() {
+        timerId = setInterval(function(){
+            /*5.1 变换索引*/
+            index++;
+            /*5.2.添加过渡效果*/
+            imgBox.style.transition = "left 0.5s ease-in-out";
+            /*5.3 设置偏移*/
+            imgBox.style.left = (-index*bannerWidth) + "px";
+            /*5.4 判断是否播到最后一张*/
+            setTimeout(function(){
+                if (index == count -1) {
+                    // 从末尾到L1切换到前面到L1
+                    index = 1; 
+                    /*关闭过渡效果，实现快速切换，否则会看出来两张同样图片的切换过程*/
+                    /*如果一个元素的某个属性之前添加过过渡效果，那么过渡属性会一直存在，如果不想要，则需要清除过渡效果*/
+                    imgBox.style.transition = "none";
+                    imgBox.style.left = (-index*bannerWidth) + "px";
+                }
+            },500);
+        },2000);
+    }
+    startTime();
+
+    /*6.实现手动轮播 */
+    var startX, moveX, distanceX;
+    /*6.1触摸开始事件*/
+    imgBox.addEventListener("touchstart",function(e){  /*为图片添加触摸事件--触摸开始*/
+        clearInterval(timerId); /*清除定时器*/
+        startX = e.targetTouches[0].clientX;/*获取当前手指的起始位置*/
+    });
+    /*6.2滑动过程事件*/
+    imgBox.addEventListener("touchmove",function(e){   
+        moveX = e.targetTouches[0].clientX;  /*记录手指在滑动过程中的位置*/
+        distanceX = moveX - startX;   /*计算坐标的差异*/
+        imgBox.style.transition = "none";   /*为了保证效果正常，将之前可能添加的过渡样式清除*/
+        imgBox.style.left = (-index*bannerWidth + distanceX) + "px";  /*实现元素的偏移  left参照最原始的坐标
+        注意：本次的滑动操作应该基于之前轮播图已经偏移的距离*/
+    });
+    /*6.3滑动结束事件*/
+
+
+}

@@ -73,10 +73,15 @@
     position: relative;
 }
 .jd_bannerImg {
-    width: 800%;
+    width: 800%;  
+    /* width: 1000%; 做JS轮播时前后又各多放了一张图片，用js改*/
+    /* transform: translateX(-10%); 为了显示第二张图片l1，用JS改；*/
+    position: relative;
+   /* 方法二  left:-100% */
 }
 .jd_bannerImg > li {
     width: 12.5%;
+    /* width: 10%;用JS修改 */
     float: left;
 }
 .jd_bannerImg > li img {
