@@ -119,6 +119,10 @@ html,body {
     width: 100%;
     overflow: hidden;
     flex: 1;
+    position: relative;  /*让滚动条相对于父元素定位，给父元素一个定位，不能给到ul哈*/
+}
+.ct_hotCategory ul{
+    overflow: hidden; /*为了让ul有高度，这样才能滑动*/
 }
 .ct_hotCategory li {
     width: 33.33%;

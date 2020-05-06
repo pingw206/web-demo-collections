@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/category.css">
     <script src="js/category.js"></script>
     <script src="js/common.js"></script>
+    <script src="js/iscroll.js"></script>
 </head>
 <body>
     <div class="ct_layout">
@@ -263,5 +264,11 @@
             </div>
         </div>
     </div>
+    <script>
+        var myScroll = new IScroll('.ct_hotCategory', {
+        mouseWheel: true,
+        scrollbars: true
+        });
+    </script>
 </body>
 </html>
